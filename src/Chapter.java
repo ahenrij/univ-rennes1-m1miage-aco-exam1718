@@ -7,7 +7,7 @@ public class Chapter implements Visitable {
 
     private Collection<Section> sections = new ArrayList<>();
     private Title title;
-
+    
     public Chapter(Title title) {
         this.title = title;
     }

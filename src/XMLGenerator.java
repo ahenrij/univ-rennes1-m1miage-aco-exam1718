@@ -3,7 +3,7 @@ import java.io.PrintStream;
 public class XMLGenerator implements Visitor {
 
     private PrintStream out;
-    private int depth = 0;
+    private int headerDepth = 0;
 
     public XMLGenerator(PrintStream out) {
         this.out = out;
@@ -20,14 +20,14 @@ public class XMLGenerator implements Visitor {
 
     @Override
     public void visitSection(Section s) {
-        depth++;
-        out.println("<H" + depth + ">");
+        headerDepth++;
+        out.println("<H" + headerDepth + ">");
         s.getTitle().accept(this);
         for (SectionElement e: s.getElements()) {
             e.accept(this);
         }
-        out.println("</H" + depth + ">");
-        depth--;
+        out.println("</H" + headerDepth + ">");
+        headerDepth--;
     }
 
     @Override
